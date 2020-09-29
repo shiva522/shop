@@ -10,7 +10,7 @@ const overlay = document.createElement('div');
 overlay.classList.add('overlay');
 document.body.insertAdjacentElement('beforeend',overlay);
 
-const openMenu =  () =>{
+const openMenu =  () =>{ 
    catalog.classList.add('open');
    overlay.classList.add('active');
 };
