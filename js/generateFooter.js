@@ -1,6 +1,16 @@
 'use strict';
+import {getData} from './getData.js';
 
 const generateFooter = ()=>{
+
+    getData.catalog(data =>{
+      let catalogList = ``;
+
+        data.forEach(item =>{
+            catalogList += `<li class="footer-list"><a href="goods.html?cat=${item}">{item}</a></li>`;
+        })
+    });
+
     const footer = `
     <footer>
     <div class="container">
