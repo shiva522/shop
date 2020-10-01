@@ -43,7 +43,7 @@ export const catalog = ()=>{
 
     document.addEventListener('keydown',(event) =>{
         if(event.code === 'Escape'){
-            closeSubMenu();
+            closeMenu();
         }
     });
 
