@@ -22,7 +22,7 @@ export const catalog = ()=>{
         overlay.classList.remove('active');
     };
 
-    const openSubMenu = event =>{
+    const openSubMenu = event =>{ //handlerCatalog
         event.preventDefault();
         const target = event.target;
         const itemList = target.closest('.catalog-list__item');
@@ -30,6 +30,11 @@ export const catalog = ()=>{
             subCatalogHeader.innerHTML = target.innerHTML;
             subCatalog.classList.add('subopen')
         }
+
+        if(event.target.classList.contains('.btn-close')){
+            closeMenu();
+        }
+
     };
 
     const closeSubMenu = () =>{

@@ -64,8 +64,8 @@ export const getData = {
         this.get((data)=>{
         const result = data.filter(item => item.category === value)
             .reduce((arr,item)=>{
-               if(arr.includes(!item.subcategory) && item.category === value)
-                   ar.push(item.subcategory);
+               if(!arr.includes(item.subcategory) && item.category === value)
+                   arr.push(item.subcategory);
                 return arr;
             },[]);
         callback(result);
