@@ -6,11 +6,23 @@ const PARAM = {
 
 export const getData = {
   url:  'database/dataBase.json',
-    get(process){ //get: function(process){ - раньше так было //
-    fetch(this.url)
-        .then((response) => response.json()) //из а зпроса данные переводим в json
-        .then(process) //и преедаем эти данные в process
+
+    async getData (url) { //асинхронная функция/ она всегда возвращает promise
+    const response = await fetch(url);//т.к. только получаем данные, никаких доп параметров не надо
+    //"await" значит что дальше код не будет выполняться пока строчка выше не выполниться/ даже присвоение выше не произойдет пока не выполниться
+    if(!response.ok){
+        throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`);
+    }
+
+    return await response.json();
     },
+
+    get(process){ //get: function(process){ - раньше так было //
+    this.getData(this.url)
+        .then(process) //и преедаем эти данные в process
+        .catch((err)=> console.error(err));
+    },
+
     wishList(list,callback){
         this.get((data)=>{
             const result = data.filter((item)=> list.includes(item.id));
