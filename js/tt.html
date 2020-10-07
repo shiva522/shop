@@ -13,10 +13,10 @@
 </form>
 
 <script>
-     const data = {
+     /*const data = {
         name: "Bear",
         count: 3,
-    };
+    };*/
 
     /*console.log(data);
     const dataJson = JSON.stringify(data);
@@ -39,8 +39,13 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
 
+        const data1 = {
+            name: "Bear",
+            count: 3,
+        };
+
         const formData = new FormData(form);
-        formData.set('order',JSON.stringify(data));//пример добавления данных помимо того что есть в форме (поля) (для сервера понимающего JSON формат
+        formData.set('order',JSON.stringify(data1));//пример добавления данных помимо того что есть в форме (поля) (для сервера понимающего JSON формат
 
         //если сервер не понимает json
         const data = {};
@@ -49,11 +54,11 @@
         }
         console.log(data);
         //если сервер не понимает json - конец
-        sendData('https://jsonplaceholder.typicode.com/posts',formData).then(() =>{
+        sendData('https://jsonplaceholder.typicode.com/posts',JSON.stringify(formData) ).then(() =>{
             form.reset()
-                .catch((err) => {
-                    console.log(err);
-                });
+
+        }).catch((err) => {
+            console.log(err);
         });
     });
 

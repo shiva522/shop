@@ -40,9 +40,7 @@ export const loadData = ()=>{
         getData.item(location.hash.substring(1),(data)=> console.log(data));
     }
 
-    if(location.pathname.includes('cart')){ //если сождержит cart
-    getData.cart(cartList, (data) => console.log(data));
-    }
+
 
     //getData.catalog((data) => console.log(data));
     //getData.subCatalog("Декор",(data) => console.log(data));
